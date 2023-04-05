@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../../config/theme/app_color_scheme.dart';
 
+import '../../../common/utils/search_debouncer.dart';
 import '../../../common/widgets/app_text_form_field.dart';
+import '../../../config/theme/app_color_scheme.dart';
 import '../../../generated_assets/assets.gen.dart';
 import '../bloc/search_bloc.dart';
 
@@ -16,6 +17,7 @@ class SearchField extends StatefulWidget {
 /// State for widget HeaderSearchField
 class _SearchFieldState extends State<SearchField> {
   late final TextEditingController _controller;
+  final _debouncer = SearchDebouncer(milliseconds: 500);
 
   @override
   void initState() {
@@ -36,7 +38,9 @@ class _SearchFieldState extends State<SearchField> {
             // initialValue: state.searchQuery,
             controller: _controller,
             onChanged: (val) {
-              context.read<SearchBloc>().add(SearchEvent.fetchGifs(searchQuery: val));
+              _debouncer.run(() {
+                context.read<SearchBloc>().add(SearchEvent.fetchGifs(searchQuery: val));
+              });
 
               context.read<SearchBloc>().add(SearchEvent.updateSearchQuery(val));
             },
