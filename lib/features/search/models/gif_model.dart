@@ -1,6 +1,6 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:giphy/features/search/models/nested_image.dart';
-import 'package:giphy/features/search/models/original_model.dart';
+import 'nested_image.dart';
+import 'original_model.dart';
 
 part 'gif_model.freezed.dart';
 part 'gif_model.g.dart';

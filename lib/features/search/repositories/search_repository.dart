@@ -15,11 +15,13 @@ class SearchGifSRepository implements ISearchGifsRepository {
     required int limit,
   }) async {
     try {
-      return await _giphyApiClient.searchGifs(
-        searchQuery: searchQuery,
-        limit: limit,
-        offset: offset,
-      );
+      return await _giphyApiClient
+          .searchGifs(
+            searchQuery: searchQuery,
+            limit: limit,
+            offset: offset,
+          )
+          .timeout(const Duration(seconds: 1));
     } catch (e) {
       rethrow;
     }

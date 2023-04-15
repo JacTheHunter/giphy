@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:giphy/features/search/bloc/search_bloc.dart';
-import 'package:giphy/features/search/data_source/giphy_api_client.dart';
-import 'package:giphy/features/search/repositories/i_search_repository.dart';
+import 'package:giphy/common/blocs/bloc_observer.dart';
+import 'features/search/bloc/search_bloc.dart';
+import 'features/search/data_source/giphy_api_client.dart';
+import 'features/search/repositories/i_search_repository.dart';
 
 import 'common/blocs/app_theme_cubit.dart';
 import 'common/services/api_service.dart';
@@ -20,6 +21,7 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
+    Bloc.observer = Observer();
     return MultiRepositoryProvider(
       providers: [
         RepositoryProvider(

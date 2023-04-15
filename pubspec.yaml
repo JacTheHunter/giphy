@@ -49,6 +49,7 @@ dependencies:
   scroll_to_index: ^3.0.1
   shimmer: ^2.0.0
   mockito: ^5.4.0
+  logger: ^1.3.0
 
 dev_dependencies:
   flutter_test:

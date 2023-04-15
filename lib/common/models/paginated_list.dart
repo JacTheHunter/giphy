@@ -1,4 +1,4 @@
-import 'package:giphy/common/models/pagination_model.dart';
+import 'pagination_model.dart';
 import 'package:json_annotation/json_annotation.dart';
 part 'paginated_list.g.dart';
 
